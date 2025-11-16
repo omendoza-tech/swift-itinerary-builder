@@ -7,20 +7,20 @@ import { recalculateDayTimes } from '@/utils/timeCalculations';
 import { Plane } from 'lucide-react';
 
 const initialActivities: Activity[] = [
-  { id: '1', name: 'Breakfast at Hotel', startTime: '08:00', endTime: '09:00', location: 'Hotel Restaurant', dayId: 'day-1' },
-  { id: '2', name: 'Visit Louvre Museum', startTime: '09:30', endTime: '12:30', location: 'Louvre Museum, Paris', dayId: 'day-1' },
-  { id: '3', name: 'Lunch at Café de Flore', startTime: '13:00', endTime: '14:30', location: 'Café de Flore, Saint-Germain', dayId: 'day-1' },
-  { id: '4', name: 'Eiffel Tower Tour', startTime: '15:00', endTime: '17:00', location: 'Eiffel Tower, Champ de Mars', dayId: 'day-1' },
-  { id: '5', name: 'Seine River Cruise', startTime: '17:30', endTime: '19:00', location: 'Port de la Bourdonnais', dayId: 'day-1' },
+  { id: '1', name: 'Breakfast at Hotel', description: 'Start your day with a delicious breakfast buffet featuring French pastries, fresh fruits, and hot beverages.', startTime: '08:00', endTime: '09:00', location: 'Hotel Restaurant', dayId: 'day-1' },
+  { id: '2', name: 'Visit Louvre Museum', description: 'Explore the world\'s largest art museum and see iconic works including the Mona Lisa and Venus de Milo.', startTime: '09:30', endTime: '12:30', location: 'Louvre Museum, Paris', dayId: 'day-1' },
+  { id: '3', name: 'Lunch at Café de Flore', description: 'Enjoy traditional French cuisine at this historic café frequented by famous writers and artists.', startTime: '13:00', endTime: '14:30', location: 'Café de Flore, Saint-Germain', dayId: 'day-1' },
+  { id: '4', name: 'Eiffel Tower Tour', description: 'Visit the iconic iron lattice tower and enjoy breathtaking panoramic views of Paris from the observation deck.', startTime: '15:00', endTime: '17:00', location: 'Eiffel Tower, Champ de Mars', dayId: 'day-1' },
+  { id: '5', name: 'Seine River Cruise', description: 'Relax on a scenic boat cruise along the Seine, passing by illuminated monuments and bridges.', startTime: '17:30', endTime: '19:00', location: 'Port de la Bourdonnais', dayId: 'day-1' },
   
-  { id: '6', name: 'Morning Jog', startTime: '07:00', endTime: '08:00', location: 'Champs-Élysées', dayId: 'day-2' },
-  { id: '7', name: 'Visit Notre-Dame', startTime: '09:00', endTime: '11:00', location: 'Notre-Dame Cathedral', dayId: 'day-2' },
-  { id: '8', name: 'Lunch at Le Marais', startTime: '12:00', endTime: '13:30', location: 'Le Marais District', dayId: 'day-2' },
-  { id: '9', name: 'Shopping on Champs-Élysées', startTime: '14:00', endTime: '17:00', location: 'Champs-Élysées Avenue', dayId: 'day-2' },
+  { id: '6', name: 'Morning Jog', description: 'Start your day with an energizing jog along the famous avenue, enjoying the morning atmosphere of Paris.', startTime: '07:00', endTime: '08:00', location: 'Champs-Élysées', dayId: 'day-2' },
+  { id: '7', name: 'Visit Notre-Dame', description: 'Marvel at the Gothic architecture of this medieval Catholic cathedral and learn about its fascinating history.', startTime: '09:00', endTime: '11:00', location: 'Notre-Dame Cathedral', dayId: 'day-2' },
+  { id: '8', name: 'Lunch at Le Marais', description: 'Discover charming bistros and trendy eateries in this historic district known for its vibrant food scene.', startTime: '12:00', endTime: '13:30', location: 'Le Marais District', dayId: 'day-2' },
+  { id: '9', name: 'Shopping on Champs-Élysées', description: 'Browse luxury boutiques, flagship stores, and cafés along one of the most famous shopping streets in the world.', startTime: '14:00', endTime: '17:00', location: 'Champs-Élysées Avenue', dayId: 'day-2' },
   
-  { id: '10', name: 'Breakfast & Check-out', startTime: '08:00', endTime: '10:00', location: 'Hotel', dayId: 'day-3' },
-  { id: '11', name: 'Visit Sacré-Cœur', startTime: '10:30', endTime: '12:00', location: 'Sacré-Cœur, Montmartre', dayId: 'day-3' },
-  { id: '12', name: 'Farewell Lunch', startTime: '12:30', endTime: '14:00', location: 'Montmartre Bistro', dayId: 'day-3' },
+  { id: '10', name: 'Breakfast & Check-out', description: 'Enjoy your final breakfast in Paris and prepare for departure with a smooth hotel check-out process.', startTime: '08:00', endTime: '10:00', location: 'Hotel', dayId: 'day-3' },
+  { id: '11', name: 'Visit Sacré-Cœur', description: 'Climb to the highest point in the city to visit this stunning basilica and enjoy spectacular views of Paris.', startTime: '10:30', endTime: '12:00', location: 'Sacré-Cœur, Montmartre', dayId: 'day-3' },
+  { id: '12', name: 'Farewell Lunch', description: 'Savor your last French meal at a cozy bistro in the artistic Montmartre neighborhood before heading home.', startTime: '12:30', endTime: '14:00', location: 'Montmartre Bistro', dayId: 'day-3' },
 ];
 
 const DAYS = ['day-1', 'day-2', 'day-3'];
