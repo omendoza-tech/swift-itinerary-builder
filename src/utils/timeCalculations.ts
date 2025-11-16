@@ -18,12 +18,13 @@ export function calculateDuration(startTime: string, endTime: string): number {
   return timeToMinutes(endTime) - timeToMinutes(startTime);
 }
 
-// Recalculate times for activities in a day
-export function recalculateDayTimes(activities: Activity[]): Activity[] {
+// Recalculate times for activities in a day, preserving the day's start time
+export function recalculateDayTimes(activities: Activity[], dayStartTime?: string): Activity[] {
   if (activities.length === 0) return activities;
 
   const updatedActivities: Activity[] = [];
-  let currentTime = timeToMinutes(activities[0].startTime);
+  // Use provided start time, or default to the first activity's start time
+  let currentTime = timeToMinutes(dayStartTime || activities[0].startTime);
 
   for (const activity of activities) {
     const duration = calculateDuration(activity.startTime, activity.endTime);

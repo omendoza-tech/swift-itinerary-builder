@@ -40,6 +40,17 @@ const Index = () => {
       const oldDayId = activeActivity.dayId;
       const oldIndex = prevActivities.findIndex(a => a.id === active.id);
       
+      // Store the earliest start time for each affected day BEFORE reordering
+      const getEarliestTimeForDay = (dayId: string, activities: Activity[]) => {
+        const dayActivities = activities.filter(a => a.dayId === dayId);
+        if (dayActivities.length === 0) return '09:00'; // default start time
+        return dayActivities.reduce((earliest, activity) => {
+          return activity.startTime < earliest ? activity.startTime : earliest;
+        }, dayActivities[0].startTime);
+      };
+
+      const oldDayStartTime = getEarliestTimeForDay(oldDayId, prevActivities);
+      
       // Determine new day and position
       let newDayId = oldDayId;
       let newIndex = oldIndex;
@@ -58,6 +69,8 @@ const Index = () => {
         }
       }
 
+      const newDayStartTime = getEarliestTimeForDay(newDayId, prevActivities);
+
       // Move the activity
       let updatedActivities = [...prevActivities];
       updatedActivities.splice(oldIndex, 1);
@@ -71,7 +84,11 @@ const Index = () => {
           .filter(a => a.dayId === dayId)
           .sort((a, b) => updatedActivities.indexOf(a) - updatedActivities.indexOf(b));
         
-        const recalculated = recalculateDayTimes(dayActivities);
+        // Use the preserved start time for this day
+        const startTime = dayId === oldDayId ? oldDayStartTime : 
+                         dayId === newDayId ? newDayStartTime : '09:00';
+        
+        const recalculated = recalculateDayTimes(dayActivities, startTime);
         
         recalculated.forEach(recalc => {
           const index = updatedActivities.findIndex(a => a.id === recalc.id);
